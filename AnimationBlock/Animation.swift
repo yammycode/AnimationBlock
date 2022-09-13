@@ -5,8 +5,6 @@
 //  Created by Anton Saltykov on 13.09.2022.
 //
 
-import SpringAnimation
-import Foundation
 
 struct Animation {
     let preset: String
