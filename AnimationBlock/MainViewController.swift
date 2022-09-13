@@ -26,7 +26,7 @@ final class MainViewController: UIViewController {
         currentAnimation = nextAnimation
         animationInfoLabel.text = currentAnimation?.description ?? ""
         setNextAnimation()
-        sender.setTitle(nextAnimation.preset.rawValue, for: .normal)
+        sender.setTitle(nextAnimation.preset, for: .normal)
         runAnimation()
     }
 
@@ -37,8 +37,8 @@ final class MainViewController: UIViewController {
 
     private func runAnimation() {
 
-        blockView.animation = currentAnimation?.preset.rawValue ?? ""
-        blockView.curve = currentAnimation?.curve.rawValue ?? ""
+        blockView.animation = currentAnimation?.preset ?? ""
+        blockView.curve = currentAnimation?.curve ?? ""
         blockView.force = CGFloat(currentAnimation?.force ?? 0)
         blockView.duration = CGFloat(currentAnimation?.duration ?? 0)
         blockView.delay = CGFloat(currentAnimation?.delay ?? 0)

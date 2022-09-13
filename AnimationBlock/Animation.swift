@@ -9,8 +9,8 @@ import SpringAnimation
 import Foundation
 
 struct Animation {
-    let preset: AnimationPreset
-    let curve: AnimationCurve
+    let preset: String
+    let curve: String
     let force: Double
     let duration: Double
     let delay: Double
@@ -29,8 +29,8 @@ delay: \(delay)
         guard let animationPreset = AnimationPreset.allCases.shuffled().first,
               let animetionCurve = AnimationCurve.allCases.shuffled().first else { return nil }
 
-        return Animation(preset: animationPreset,
-                         curve: animetionCurve,
+        return Animation(preset: animationPreset.rawValue,
+                         curve: animetionCurve.rawValue,
                          force: getRandomDouble(between: 0, and: 1),
                          duration: getRandomDouble(between: 0, and: 2),
                          delay: getRandomDouble(between: 0, and: 1))
