@@ -31,7 +31,7 @@ final class MainViewController: UIViewController {
     }
 
     private func setNextAnimation() {
-        guard let animation = Animation.getAnimation() else { return }
+        guard let animation = getAnimation() else { return }
         nextAnimation = animation
     }
 
@@ -43,6 +43,22 @@ final class MainViewController: UIViewController {
         blockView.duration = CGFloat(currentAnimation?.duration ?? 0)
         blockView.delay = CGFloat(currentAnimation?.delay ?? 0)
         blockView.animate()
+    }
+
+    private func getAnimation() -> Animation? {
+        guard let animationPreset = AnimationPreset.allCases.shuffled().first,
+              let animetionCurve = AnimationCurve.allCases.shuffled().first else { return nil }
+
+        return Animation(preset: animationPreset.rawValue,
+                         curve: animetionCurve.rawValue,
+                         force: getRandomDouble(between: 0, and: 1),
+                         duration: getRandomDouble(between: 0, and: 2),
+                         delay: getRandomDouble(between: 0, and: 1))
+    }
+
+    private func getRandomDouble(between min: Double, and max: Double) -> Double {
+        let randomValue = Double.random(in: min...max)
+        return Double(round(100 * randomValue) / 100)
     }
     
 }
